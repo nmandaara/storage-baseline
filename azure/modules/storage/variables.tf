@@ -1,17 +1,17 @@
 variable "resource_group_name" {
-  type = string
+  type        = string
   description = "The name of the resource group in which to create the storage account."
 }
 
 variable "storage_account_name" {
-  type = string
+  type        = string
   description = "The name of the storage account to create."
 }
 
 variable "account_tier" {
-  type = string
+  type        = string
   description = "Defines the performance tier of the storage account. Valid values are 'Standard' and 'Premium'."
-  default = "Standard"
+  default     = "Standard"
 
   validation {
     condition     = contains(["Standard", "Premium"], var.account_tier)
@@ -20,9 +20,9 @@ variable "account_tier" {
 }
 
 variable "account_replication_type" {
-  type = string
+  type        = string
   description = "Defines the replication strategy for the storage account. Valid values are 'LRS', 'GRS', 'RAGRS', and 'ZRS'."
-  default = "LRS"
+  default     = "LRS"
 
   validation {
     condition     = contains(["LRS", "GRS", "RAGRS", "ZRS"], var.account_replication_type)
@@ -31,21 +31,21 @@ variable "account_replication_type" {
 }
 
 variable "access_tier" {
-  type = string
+  type        = string
   description = "Defines the access tier for the storage account. Valid values are 'Hot' and 'Cool'."
-  default = "Hot"
+  default     = "Hot"
 }
 
 variable "https_traffic_only_enabled" {
-  type = bool
+  type        = bool
   description = "Indicates whether HTTPS traffic only is enabled for the storage account."
-  default = true
+  default     = true
 }
 
 variable "min_tls_version" {
-  type = string
+  type        = string
   description = "Defines the minimum TLS version to be permitted on requests to storage. Valid values are 'TLS1_2' and 'TLS1_3'."
-  default = "TLS1_2"
+  default     = "TLS1_2"
 
   validation {
     condition     = contains(["TLS1_2", "TLS1_3"], var.min_tls_version)
@@ -54,9 +54,9 @@ variable "min_tls_version" {
 }
 
 variable "network_rules_default_action" {
-  type = string
+  type        = string
   description = "Defines the default action for network rules. Valid values are 'Allow' and 'Deny'."
-  default = "Deny"
+  default     = "Deny"
 
   validation {
     condition     = contains(["Allow", "Deny"], var.network_rules_default_action)
@@ -65,21 +65,21 @@ variable "network_rules_default_action" {
 }
 
 variable "network_rules_ip_rules" {
-  type = list(string)
+  type        = list(string)
   description = "A list of IP addresses or CIDR blocks to allow or deny based on the network rules default action."
-  default = []
+  default     = []
 }
 
 variable "versioning_enabled" {
-  type = bool
+  type        = bool
   description = "Indicates whether blob versioning is enabled for the storage account."
-  default = false
+  default     = false
 }
 
 variable "delete_retention_days" {
-  type = number
+  type        = number
   description = "The number of days that soft-deleted blobs should be retained before permanent deletion. Valid values are between 1 and 365."
-  default = 7
+  default     = 7
 
   validation {
     condition     = var.delete_retention_days >= 1 && var.delete_retention_days <= 365
@@ -88,9 +88,9 @@ variable "delete_retention_days" {
 }
 
 variable "extra_tags" {
-  type = map(string)
+  type        = map(string)
   description = "A map of additional tags to assign to the storage account. These will be merged with the resource group's tags."
-  default = {}
+  default     = {}
 }
 
 variable "cool_after_days" {

@@ -8,15 +8,16 @@ resource "azurerm_storage_account" "storage_account" {
   account_tier             = var.account_tier
   account_replication_type = var.account_replication_type
 
-  access_tier              = var.access_tier
+  access_tier                = var.access_tier
   https_traffic_only_enabled = var.https_traffic_only_enabled
-  min_tls_version          = var.min_tls_version
+  min_tls_version            = var.min_tls_version
 
   network_rules {
-    default_action             = var.network_rules_default_action
-    ip_rules                   = var.network_rules_ip_rules
+    default_action = var.network_rules_default_action
+    ip_rules       = var.network_rules_ip_rules
   }
 
+  # Enable blob versioning and set delete retention policy
   blob_properties {
     versioning_enabled = var.versioning_enabled
 
@@ -31,6 +32,7 @@ resource "azurerm_storage_account" "storage_account" {
   )
 }
 
+# Lifecycle management policy to transition blobs to cool and archive tiers
 resource "azurerm_storage_management_policy" "storage_management_policy" {
   storage_account_id = azurerm_storage_account.storage_account.id
 
@@ -44,7 +46,7 @@ resource "azurerm_storage_management_policy" "storage_management_policy" {
 
     actions {
       base_blob {
-        tier_to_cool_after_days_since_modification_greater_than = var.cool_after_days
+        tier_to_cool_after_days_since_modification_greater_than    = var.cool_after_days
         tier_to_archive_after_days_since_modification_greater_than = var.archive_after_days
       }
     }
