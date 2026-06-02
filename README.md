@@ -9,6 +9,8 @@ The fix was not complicated. The problem was just that there was no standard sta
 
 This is a Terraform module for Azure and AWS that encodes those basics — security hardening and lifecycle tiering out of the box, so every storage account starts from the same baseline.
 
+<img src="docs/tier-flow.svg" width="700"/>
+
 ---
 
 ## What it does
@@ -17,6 +19,8 @@ Every storage account provisioned with this module gets:
 - Public access blocked by default
 - Encryption enforced (in transit and at rest)
 - Lifecycle rules configured - Hot for 30 days, Cool for 60 days, Archive after that. 
+
+<img src="docs/before-after.svg" width="700"/>
 
 ---
 
