@@ -110,9 +110,9 @@ Instead of my usual habit of pushing everything at once, I am
 trying to hold myself accountable and push this in batches.
 
 - [x] Checkpoint 1 — Repo scaffold & README
-- [ ] Checkpoint 2 — Azure Terraform module
-- [ ] Checkpoint 3 — AWS Terraform module
-- [ ] Checkpoint 4 — Examples & documentation
+- [x] Checkpoint 2 — Azure Terraform module
+- [x] Checkpoint 3 — AWS Terraform module
+- [x] Checkpoint 4 — Examples & documentation
 
 ---
 
